@@ -3,3 +3,7 @@
     --blue: 38 49 166;
   }
 }
+
+.swiper-slide {
+  background: rgb(227, 168, 168);
+}

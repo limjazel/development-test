@@ -1,44 +1,46 @@
-let nav = document.getElementById("nav-sm")
-let navWrapper = document.getElementById("nav-wrapper")
-let navBackdrop = document.getElementById("nav-backdrop")
-let openNavButton = document.getElementById("open-nav")
-let closeNavButton = document.getElementById("close-nav")
+let reviews = [
+	{
+		stars: "",
+		rating: 4.28,
+		photo: "",
+		source: "Trustpilot",
+	},
+	{
+		stars: "",
+		rating: 4.28,
+		photo: "",
+		source: "Capterra",
+	},
+]
 
-function openNav() {
-	// show navigation
-	if (nav.classList.contains("hidden")) {
-		nav.classList.remove("hidden")
-		nav.classList.add("block")
+console.error(reviews)
 
-		navWrapper.classList.add("w-full")
+const swiper = new Swiper(".swiper", {
+	a11y: {
+		prevSlideMessage: "Previous slide",
+		nextSlideMessage: "Next slide",
+	},
 
-		navBackdrop.classList.remove("hidden")
-		navBackdrop.classList.add("block")
+	// Optional parameters
+	direction: "horizontal",
+	loop: true,
+	slidesPerView: 3,
 
-		openNavButton.classList.remove("block")
-		openNavButton.classList.add("hidden")
+	// If we need pagination
+	pagination: {
+		el: ".swiper-pagination",
+		dynamicBullets: true,
+	},
 
-		closeNavButton.classList.remove("hidden")
-		closeNavButton.classList.add("block")
-	}
-	// hide navigation
-	else if (nav.classList.contains("block")) {
-		closeNav()
-	}
-}
+	// Navigation arrows
+	navigation: {
+		nextEl: ".swiper-button-next",
+		prevEl: ".swiper-button-prev",
+	},
 
-function closeNav() {
-	nav.classList.remove("block")
-	nav.classList.add("hidden")
-
-	navWrapper.classList.remove("w-full")
-
-	navBackdrop.classList.remove("block")
-	navBackdrop.classList.add("hidden")
-
-	openNavButton.classList.remove("hidden")
-	openNavButton.classList.add("block")
-
-	closeNavButton.classList.remove("block")
-	closeNavButton.classList.add("hidden")
-}
+	// And if we need scrollbar
+	scrollbar: {
+		el: ".swiper-scrollbar",
+		hide: true,
+	},
+})
