@@ -1,119 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-		<link
-			rel="stylesheet"
-			href="./assets/css/base.css" />
-		<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-	</head>
+    <link rel="stylesheet" href="./assets/css/colors.css" />
+    <link rel="stylesheet" href="./assets/css/typography.css" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+  </head>
 
-	<body class="text-base font-sans leading-normal tracking-normal antialiased">
-		<header class="[ container mx-auto ]">
-			<div class="[ hidden md:block ]">
-				<nav class="[ flex gap-6 items-center ]">
-					<a href="/">
-						<span class="[ sr-only ]">home</span>
-						<img
-							src="https://lanman2018.ieee-lanman.org/files/2016/01/sample-logo@2x.png"
-							alt="website logo"
-							class="[ h-10 ]" />
-					</a>
-					<a href="/">features</a>
-					<a href="/">solutions</a>
-					<a href="/">resources</a>
-					<a href="/">pricing</a>
-					<a href="/">login</a>
-					<a href="/">get started</a>
-				</nav>
-			</div>
+  <body
+    class="text-base font-sans leading-normal tracking-normal antialiased [ bg-slate-100 ]"
+  >
+    <header class="[ container mx-auto ] [ my-4 ]">
+      <!-- NAVIGATION -->
+      <div class="[ hidden lg:block ]">
+        <nav
+          class="[ flex items-center justify-between ] [ px-6 py-4 ] [ bg-white rounded-full ]"
+          x-data="{ data: navLinks }"
+        >
+          <a :href="navLinks[0].url">
+            <span class="[ sr-only ]" x-text="navLinks[0].name">home</span>
+            <img
+              src="https://assets-global.website-files.com/63113fb546c11aabf211d52e/6334c69ac49cd5eeeba494e1_underbelly_logo.svg"
+              alt="website logo"
+              class="[ h-10 ]"
+            />
+          </a>
 
-			<div class="[ block md:hidden ]">
-				<img
-					src="https://lanman2018.ieee-lanman.org/files/2016/01/sample-logo@2x.png"
-					alt="website logo"
-					class="[ h-10 ]" />
+          <span class="[ flex gap-8 ]">
+            <template x-for="navLink in navLinks.slice(1)">
+              <a
+                :href="navLink.url"
+                x-text="navLink.name"
+                class="[ font-bold ]"
+              ></a>
+            </template>
+          </span>
 
-				<div
-					id="nav-wrapper"
-					class="[ fixed bottom-0 right-0 ]">
-					<button
-						type="button"
-						id="open-nav"
-						onclick="openNav()"
-						class="[ absolute bottom-4 right-4 ] bg-red-100">
-						open nav
-					</button>
+          <span class="[ flex gap-4 ] [ font-bold ]">
+            <a
+              href="/"
+              class="[ px-5 py-2.5 ] [ rounded-full border ] [ hover:bg-slate-100 transition ]"
+            >
+              Log In
+            </a>
+            <a
+              href="/"
+              class="[ px-5 py-2.5 ] [ rounded-full bg-accent text-white ] [ hover:bg-accent/80 transition ]"
+            >
+              Get started
+            </a>
+          </span>
+        </nav>
+      </div>
 
-					<div>
-						<div class="[ relative z-20 ]">
-							<nav
-								id="nav-sm"
-								class="[ hidden grid gap-6 ] bg-yellow-200 [ pt-10 pb-24 px-6 ]">
-								<a href="/">home</a>
-								<a href="/">features</a>
-								<a href="/">solutions</a>
-								<a href="/">resources</a>
-								<a href="/">pricing</a>
-								<a href="/">login</a>
-								<a href="/">get started</a>
-							</nav>
+      <!-- Navigation for small screens -->
+      <div class="[ block lg:hidden ]">
+        <img
+          src="https://assets-global.website-files.com/63113fb546c11aabf211d52e/6334c69ac49cd5eeeba494e1_underbelly_logo.svg"
+          alt="website logo"
+          class="[ h-10 mx-6 ]"
+        />
 
-							<button
-								type="button"
-								id="close-nav"
-								onclick="closeNav()"
-								class="[ hidden ] [ absolute bottom-4 right-4 ] bg-red-100">
-								close nav
-							</button>
-						</div>
+        <div id="nav-wrapper" class="[ fixed bottom-0 right-0 ] [ z-20 ]">
+          <button
+            type="button"
+            id="open-nav"
+            onclick="openNav()"
+            class="[ absolute bottom-5 right-5 p-2 ] [ bg-accent focus:bg-accent/70 rounded-lg shadow ]"
+          >
+            <span class="[ sr-only ]">open navigation</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="white"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </button>
 
-						<div
-							id="nav-backdrop"
-							class="[ hidden ] [ fixed inset-0 bg-orange-100/50 z-10 ]"></div>
-					</div>
-				</div>
-			</div>
-		</header>
+          <div>
+            <div class="[ relative z-30 ]">
+              <nav
+                id="nav-sm"
+                class="[ hidden grid gap-2 ] [ bg-white shadow-lg ] [ pt-10 pb-24 px-6 ]"
+                x-data="{ data: navLinks }"
+              >
+                <span class="[ grid gap-6 justify-items-start ]">
+                  <template x-for="navLink in navLinks">
+                    <a
+                      :href="navLink.url"
+                      x-text="navLink.name"
+                      class="[ font-bold py-1 ]"
+                    ></a>
+                  </template>
+                </span>
 
-		<main>
-			<!-- HERO -->
-			<section class="[ container mx-auto ] bg-orange-100">
-				<div class="[ grid grid-cols-12 gap-6 ]">
-					<div class="[ col-span-12 lg:col-span-7 ] [ px-10 py-6 ]">
-						<div class="[ grid gap-6 ]">
-							<div>
-								<span>title eyebrow</span>
-								<h1 class="[ text-5xl ]">Page title</h1>
-							</div>
+                <span
+                  class="[ grid gap-6 justify-items-start ] [ font-bold mt-4 ]"
+                >
+                  <a
+                    href="/"
+                    class="[ px-5 py-2.5 ] [ rounded-full border ] [ hover:bg-slate-100 transition ]"
+                  >
+                    Log In
+                  </a>
+                  <a
+                    href="/"
+                    class="[ px-5 py-2.5 ] [ rounded-full bg-accent text-white ] [ hover:bg-accent/80 transition ]"
+                  >
+                    Get started
+                  </a>
+                </span>
+              </nav>
 
-							<p class="bg-blue/50">
-								Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-								amet sint. Velit officia consequat duis enim velit mollit.
-								Exercitation veniam consequat.
-							</p>
+              <button
+                type="button"
+                id="close-nav"
+                onclick="closeNav()"
+                class="[ hidden ] [ absolute bottom-5 right-5 p-2 ] [ bg-slate-200 focus:bg-slate-300 rounded-lg shadow ]"
+              >
+                <span class="[ sr-only ]">close navigation</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
 
-							<div class="[ flex gap-4 ]">
-								<a href="">Get started</a>
-								<a href="">Watch video</a>
-							</div>
-						</div>
+            <div
+              id="nav-backdrop"
+              class="[ hidden ] [ fixed inset-0 bg-slate-200/50 z-10 backdrop-blur-sm ]"
+            ></div>
+          </div>
+        </div>
+        <!-- Navigation for small screens -->
+      </div>
+      <!-- /NAVIGATION -->
+    </header>
 
-						<div class="c-carousell bg-green-100 [ mt-12 ]">
-							<!-- Slider main container -->
-							<div class="swiper [ w-full ]">
-								<!-- Additional required wrapper -->
-								<div
-									class="swiper-wrapper [ gap-4 ]"
-									x-data="{ slides: [
+    <main>
+      <!-- HERO -->
+      <section class="[ container mx-auto ] bg-orange-100">
+        <div class="[ grid grid-cols-12 gap-6 ]">
+          <div class="[ col-span-12 lg:col-span-7 ] [ px-10 py-6 ]">
+            <div class="[ grid gap-6 ]">
+              <div>
+                <span>title eyebrow</span>
+                <h1 class="[ text-5xl font-heading ]">Page title</h1>
+              </div>
+
+              <p class="bg-blue/50">
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+                amet sint. Velit officia consequat duis enim velit mollit.
+                Exercitation veniam consequat.
+              </p>
+
+              <div class="[ flex gap-4 ]">
+                <a href="">Get started</a>
+                <a href="">Watch video</a>
+              </div>
+            </div>
+
+            <div class="c-carousell bg-green-100 [ mt-12 ]">
+              <!-- Slider main container -->
+              <div class="swiper [ w-full ]">
+                <!-- Additional required wrapper -->
+                <div
+                  class="swiper-wrapper [ gap-4 ]"
+                  x-data="{ slides: [
                     {
                       stars: 4.2,
                       rating: '4.2/5',
@@ -128,182 +212,210 @@
                       photo_url: 'https://capterra.s3.amazonaws.com/assets/images/logos/capterra.png',
                       source: 'Capterra',
                     },
-                  ]}">
-									<!-- Slides -->
-									<template x-for="slide in slides">
-										<div class="swiper-slide">
-											<div class="[ grid ]">
-												<!-- Stars -->
-												<div class="flex">
-													<div class="relative">
-														<div
-															class="[ absolute inset-0 overflow-hidden ]"
-															:style="`width: ${(slide.stars / 5) * 100}%`">
-															<div class="flex absolute text-yellow-400">
-																<svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	viewBox="0 0 24 24"
-																	fill="currentColor"
-																	class="w-6 h-6">
-																	<path
-																		fill-rule="evenodd"
-																		d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-																		clip-rule="evenodd" />
-																</svg>
-																<svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	viewBox="0 0 24 24"
-																	fill="currentColor"
-																	class="w-6 h-6">
-																	<path
-																		fill-rule="evenodd"
-																		d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-																		clip-rule="evenodd" />
-																</svg>
-																<svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	viewBox="0 0 24 24"
-																	fill="currentColor"
-																	class="w-6 h-6">
-																	<path
-																		fill-rule="evenodd"
-																		d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-																		clip-rule="evenodd" />
-																</svg>
-																<svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	viewBox="0 0 24 24"
-																	fill="currentColor"
-																	class="w-6 h-6">
-																	<path
-																		fill-rule="evenodd"
-																		d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-																		clip-rule="evenodd" />
-																</svg>
-																<svg
-																	xmlns="http://www.w3.org/2000/svg"
-																	viewBox="0 0 24 24"
-																	fill="currentColor"
-																	class="w-6 h-6">
-																	<path
-																		fill-rule="evenodd"
-																		d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-																		clip-rule="evenodd" />
-																</svg>
-															</div>
-														</div>
-														<div class="flex text-gray-200">
-															<svg
-																xmlns="http://www.w3.org/2000/svg"
-																viewBox="0 0 24 24"
-																fill="currentColor"
-																class="w-6 h-6">
-																<path
-																	fill-rule="evenodd"
-																	d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-																	clip-rule="evenodd" />
-															</svg>
-															<svg
-																xmlns="http://www.w3.org/2000/svg"
-																viewBox="0 0 24 24"
-																fill="currentColor"
-																class="w-6 h-6">
-																<path
-																	fill-rule="evenodd"
-																	d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-																	clip-rule="evenodd" />
-															</svg>
-															<svg
-																xmlns="http://www.w3.org/2000/svg"
-																viewBox="0 0 24 24"
-																fill="currentColor"
-																class="w-6 h-6">
-																<path
-																	fill-rule="evenodd"
-																	d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-																	clip-rule="evenodd" />
-															</svg>
-															<svg
-																xmlns="http://www.w3.org/2000/svg"
-																viewBox="0 0 24 24"
-																fill="currentColor"
-																class="w-6 h-6">
-																<path
-																	fill-rule="evenodd"
-																	d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-																	clip-rule="evenodd" />
-															</svg>
-															<svg
-																xmlns="http://www.w3.org/2000/svg"
-																viewBox="0 0 24 24"
-																fill="currentColor"
-																class="w-6 h-6">
-																<path
-																	fill-rule="evenodd"
-																	d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-																	clip-rule="evenodd" />
-															</svg>
-														</div>
-													</div>
-												</div>
-												<!-- /Stars -->
+                  ]}"
+                >
+                  <!-- Slides -->
+                  <template x-for="slide in slides">
+                    <div class="swiper-slide">
+                      <div class="[ grid ]">
+                        <!-- Stars -->
+                        <div class="flex">
+                          <div class="relative">
+                            <div
+                              class="[ absolute inset-0 overflow-hidden ]"
+                              :style="`width: ${(slide.stars / 5) * 100}%`"
+                            >
+                              <div class="flex absolute text-yellow-400">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                  class="w-6 h-6"
+                                >
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                  class="w-6 h-6"
+                                >
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                  class="w-6 h-6"
+                                >
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                  class="w-6 h-6"
+                                >
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  fill="currentColor"
+                                  class="w-6 h-6"
+                                >
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                              </div>
+                            </div>
+                            <div class="flex text-gray-200">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                class="w-6 h-6"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                  clip-rule="evenodd"
+                                />
+                              </svg>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                class="w-6 h-6"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                  clip-rule="evenodd"
+                                />
+                              </svg>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                class="w-6 h-6"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                  clip-rule="evenodd"
+                                />
+                              </svg>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                class="w-6 h-6"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                  clip-rule="evenodd"
+                                />
+                              </svg>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                class="w-6 h-6"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                                  clip-rule="evenodd"
+                                />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /Stars -->
 
-												<div class="[ flex ]">
-													<span x-text="slide.rating"></span>
-													<span>
-														(<span x-text="slide.reviews"></span> Reviews)
-													</span>
-												</div>
+                        <div class="[ flex ]">
+                          <span x-text="slide.rating"></span>
+                          <span>
+                            (<span x-text="slide.reviews"></span> Reviews)
+                          </span>
+                        </div>
 
-												<img
-													:src="slide.photo_url"
-													:alt="slide.source + ' ' + 'logo'"
-													class="[ h-10 ]" />
-											</div>
-										</div>
-									</template>
-								</div>
+                        <img
+                          :src="slide.photo_url"
+                          :alt="slide.source + ' ' + 'logo'"
+                          class="[ h-10 ]"
+                        />
+                      </div>
+                    </div>
+                  </template>
+                </div>
 
-								<!-- If we need pagination -->
-								<div class="swiper-pagination"></div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
 
-								<!-- If we need navigation buttons -->
-								<div class="swiper-button-prev"></div>
-								<div class="swiper-button-next"></div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
 
-								<!-- If we need scrollbar -->
-								<div class="swiper-scrollbar"></div>
-							</div>
-						</div>
-					</div>
+                <!-- If we need scrollbar -->
+                <div class="swiper-scrollbar"></div>
+              </div>
+            </div>
+          </div>
 
-					<div class="[ col-span-12 lg:col-span-5 ]">
-						<img
-							src="https://images.pexels.com/photos/1181742/pexels-photo-1181742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-							alt="smiling lady using a laptop" />
-					</div>
-				</div>
-			</section>
-			<!-- /HERO -->
-		</main>
+          <div class="[ col-span-12 lg:col-span-5 ]">
+            <img
+              src="https://images.pexels.com/photos/1181742/pexels-photo-1181742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="smiling lady using a laptop"
+            />
+          </div>
+        </div>
+      </section>
+      <!-- /HERO -->
+    </main>
 
-		<script>
-			tailwind.config = {
-				theme: {
-					extend: {
-						colors: {
-							blue: "rgb(var(--blue) / <alpha-value>)",
-							sample: "#702665",
-						},
-					},
-				},
-			}
-		</script>
-		<script
-			defer
-			src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-		<script src="./assets/js/nav.js"></script>
-		<script src="./assets/js/main.js"></script>
-	</body>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              accent: "rgb(var(--accent) / <alpha-value>)",
+            },
+            fontFamily: {
+              heading: "var(--font-heading)",
+              body: "var(--font-body)",
+            },
+          },
+        },
+      };
+    </script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="./assets/js/nav.js"></script>
+    <script src="./assets/js/main.js"></script>
+  </body>
 </html>
