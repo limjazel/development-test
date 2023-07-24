@@ -44,8 +44,7 @@ function closeNav() {
 }
 
 /*
-Alpine.js Alpine.data configuration for navigation links
-https://alpinejs.dev/globals/alpine-data
+Navigation links for the main nav
 */
 let navLinks = [
   {
