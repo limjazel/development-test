@@ -1,29 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
 
-  <link rel="stylesheet" href="./assets/css/base.css">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,line-clamp"></script>
-</head>
+		<link
+			rel="stylesheet"
+			href="./assets/css/base.css" />
+		<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+	</head>
 
-<body>
-  <p class="bg-blue/50">hallu</p>
+	<body>
+		<header>
+			<div class="[ hidden md:block ]">
+				<nav class="[ flex gap-6 items-center ]">
+					<a href="/">
+						<span class="[ sr-only ]">home</span>
+						<img
+							src="https://lanman2018.ieee-lanman.org/files/2016/01/sample-logo@2x.png"
+							alt="website logo"
+							class="[ h-10 ]" />
+					</a>
+					<a href="/">features</a>
+					<a href="/">solutions</a>
+					<a href="/">resources</a>
+					<a href="/">pricing</a>
+					<a href="/">login</a>
+					<a href="/">get started</a>
+				</nav>
+			</div>
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            blue: 'rgb(var(--blue) / <alpha-value>)',
-            sample: '#702665',
-          }
-        }
-      }
-    }
-  </script>
-</body>
+			<div class="[ block md:hidden ]">
+				<img
+					src="https://lanman2018.ieee-lanman.org/files/2016/01/sample-logo@2x.png"
+					alt="website logo"
+					class="[ h-10 ]" />
 
+				<div
+					id="nav-wrapper"
+					class="[ fixed bottom-0 right-0 ]">
+					<button
+						type="button"
+						id="open-nav"
+						onclick="openNav()"
+						class="[ absolute bottom-4 right-4 ] bg-red-100">
+						open nav
+					</button>
+
+					<div>
+						<div class="[ relative z-20 ]">
+							<nav
+								id="nav-sm"
+								class="[ hidden grid gap-6 ] bg-yellow-200 [ pt-10 pb-24 px-6 ]">
+								<a href="/">home</a>
+								<a href="/">features</a>
+								<a href="/">solutions</a>
+								<a href="/">resources</a>
+								<a href="/">pricing</a>
+								<a href="/">login</a>
+								<a href="/">get started</a>
+							</nav>
+
+							<button
+								type="button"
+								id="close-nav"
+								onclick="closeNav()"
+								class="[ hidden ] [ absolute bottom-4 right-4 ] bg-red-100">
+								close nav
+							</button>
+						</div>
+
+						<div
+							id="nav-backdrop"
+							class="[ hidden ] [ fixed inset-0 bg-orange-100/50 z-10 ]"></div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<h1>Page title</h1>
+			<p class="bg-blue/50">hallu</p>
+		</main>
+
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						colors: {
+							blue: "rgb(var(--blue) / <alpha-value>)",
+							sample: "#702665",
+						},
+					},
+				},
+			}
+		</script>
+		<script src="./assets/js/main.js"></script>
+	</body>
 </html>
