@@ -13,8 +13,8 @@
 		<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
 	</head>
 
-	<body>
-		<header>
+	<body class="text-base font-sans leading-normal tracking-normal antialiased">
+		<header class="[ container mx-auto ]">
 			<div class="[ hidden md:block ]">
 				<nav class="[ flex gap-6 items-center ]">
 					<a href="/">
@@ -82,8 +82,27 @@
 		</header>
 
 		<main>
-			<h1>Page title</h1>
-			<p class="bg-blue/50">hallu</p>
+			<section class="[ container mx-auto ] bg-orange-100">
+				<div class="[ grid grid-cols-12 gap-6 ]">
+					<div class="[ col-span-12 lg:col-span-7 ]">
+						<span>title eyebrow</span>
+						<h1 class="[ text-5xl ]">Page title</h1>
+						<p class="bg-blue/50">
+							Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+							amet sint. Velit officia consequat duis enim velit mollit.
+							Exercitation veniam consequat.
+						</p>
+						<a href="/">Get started</a>
+						<a href="/">Watch video</a>
+					</div>
+
+					<div class="[ col-span-12 lg:col-span-5 ]">
+						<img
+							src="https://images.pexels.com/photos/1181742/pexels-photo-1181742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+							alt="smiling lady using a laptop" />
+					</div>
+				</div>
+			</section>
 		</main>
 
 		<script>
