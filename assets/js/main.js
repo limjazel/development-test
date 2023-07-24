@@ -1,20 +1,7 @@
-let reviews = [
-	{
-		stars: "",
-		rating: 4.28,
-		photo: "",
-		source: "Trustpilot",
-	},
-	{
-		stars: "",
-		rating: 4.28,
-		photo: "",
-		source: "Capterra",
-	},
-]
-
-console.error(reviews)
-
+/* 
+Swiper.js (Carousell/Slides) configuration 
+https://swiperjs.com/swiper-api#initialize-swiper 
+*/
 const swiper = new Swiper(".swiper", {
 	a11y: {
 		prevSlideMessage: "Previous slide",
@@ -44,3 +31,5 @@ const swiper = new Swiper(".swiper", {
 		hide: true,
 	},
 })
+
+/* End of Swiper.js (Carousell/Slides) configuration */
