@@ -49,22 +49,22 @@ Navigation links for the main nav
 let navLinks = [
   {
     name: "Home",
-    url: "/",
+    url: "#",
   },
   {
     name: "Features",
-    url: "/",
+    url: "#",
   },
   {
     name: "Solutions",
-    url: "/",
+    url: "#",
   },
   {
     name: "Resources",
-    url: "/",
+    url: "#",
   },
   {
     name: "Pricing",
-    url: "/",
-  }
+    url: "#",
+  },
 ];
