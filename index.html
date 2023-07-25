@@ -208,15 +208,22 @@
               </span>
             </div>
 
-            <div class="c-carousell bg-green-100 [ mt-12 ]">
+            <section
+              class="reviews-section [ mt-12 w-full max-w-[340px] md:max-w-[600px] lg:max-w-[600px] xl:max-w-[600px] ]"
+            >
               <!-- Slider main container -->
-              <div class="swiper [ w-full ]">
+              <div class="swiper">
                 <!-- Additional required wrapper -->
-                <div class="swiper-wrapper [ gap-4 ]" x-data="{ data: slides }">
+                <div
+                  class="swiper-wrapper [ gap-2 pb-2 ]"
+                  x-data="{ data: slides }"
+                >
                   <!-- Slides -->
                   <template x-for="slide in slides">
-                    <div class="swiper-slide">
-                      <div class="[ grid ]">
+                    <div
+                      class="swiper-slide [ p-6 ] [ bg-white rounded-xl shadow ]"
+                    >
+                      <div class="[ grid gap-2 ]">
                         <!-- Stars rating -->
                         <div class="flex">
                           <div class="relative">
@@ -353,9 +360,12 @@
                         </div>
                         <!-- /Stars -->
 
-                        <div class="[ flex ]">
-                          <span x-text="slide.rating"></span>
-                          <span>
+                        <div class="[ flex items-center ]">
+                          <span
+                            x-text="slide.rating"
+                            class="[ font-bold mr-1 ]"
+                          ></span>
+                          <span class="[ text-sm text-slate-500 ]">
                             (<span x-text="slide.reviews"></span> Reviews)
                           </span>
                         </div>
@@ -363,7 +373,7 @@
                         <img
                           :src="slide.photo_url"
                           :alt="slide.source + ' ' + 'logo'"
-                          class="[ h-7 w-auto ]"
+                          class="[ h-7 w-auto mt-1 ]"
                         />
                       </div>
                     </div>
@@ -380,7 +390,7 @@
                 <!-- If we need scrollbar -->
                 <div class="swiper-scrollbar"></div>
               </div>
-            </div>
+            </section>
           </div>
 
           <div class="[ col-span-12 lg:col-span-6 ] [ px-10 ]">

@@ -15,6 +15,14 @@ let slides = [
       "https://capterra.s3.amazonaws.com/assets/images/logos/capterra.png",
     source: "Capterra",
   },
+  {
+    stars: 4.1,
+    rating: "4.1/5",
+    reviews: "18k",
+    photo_url:
+      "https://capterra.s3.amazonaws.com/assets/images/logos/capterra.png",
+    source: "Capterra",
+  },
 ];
 
 /*
@@ -29,8 +37,25 @@ const swiper = new Swiper(".swiper", {
 
   // Optional parameters
   direction: "horizontal",
+  slidesPerView: 1.5,
+  slidesPerGroup: 1.5,
   loop: true,
-  slidesPerView: 3,
+  spaceBetween: 20,
+  breakpointsBase: "window",
+  autoplay: {
+    delay: 2000,
+  },
+
+  breakpoints: {
+    768: {
+      slidesPerView: 2.5,
+      slidesPerGroup: 2,
+    },
+    1280: {
+      slidesPerView: 2.5,
+      slidesPerGroup: 2,
+    },
+  },
 
   // If we need pagination
   pagination: {
@@ -48,6 +73,11 @@ const swiper = new Swiper(".swiper", {
   scrollbar: {
     el: ".swiper-scrollbar",
     hide: true,
+  },
+
+  keyboard: {
+    enabled: true,
+    onlyInViewport: false,
   },
 });
 
