@@ -15,14 +15,6 @@ let slides = [
       "https://capterra.s3.amazonaws.com/assets/images/logos/capterra.png",
     source: "Capterra",
   },
-  {
-    stars: 4.1,
-    rating: "4.1/5",
-    reviews: "18k",
-    photo_url:
-      "https://capterra.s3.amazonaws.com/assets/images/logos/capterra.png",
-    source: "Capterra",
-  },
 ];
 
 /*
@@ -50,6 +42,10 @@ const swiper = new Swiper(".swiper", {
     768: {
       slidesPerView: 2.5,
       slidesPerGroup: 2,
+    },
+    900: {
+      slidesPerView: 2,
+      slidesPerGroup: 1,
     },
     1280: {
       slidesPerView: 2.5,
