@@ -30,7 +30,6 @@ const swiper = new Swiper(".swiper", {
   // Optional parameters
   direction: "horizontal",
   slidesPerView: 1.5,
-  slidesPerGroup: 1.5,
   loop: true,
   spaceBetween: 20,
   breakpointsBase: "window",
@@ -41,15 +40,12 @@ const swiper = new Swiper(".swiper", {
   breakpoints: {
     768: {
       slidesPerView: 2.5,
-      slidesPerGroup: 2,
     },
     900: {
       slidesPerView: 2,
-      slidesPerGroup: 1,
     },
     1280: {
       slidesPerView: 2.5,
-      slidesPerGroup: 2,
     },
   },
 
